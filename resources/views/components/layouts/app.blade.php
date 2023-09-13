@@ -12,9 +12,9 @@
             <div>
                 <a href="/">Home</a>
             </div>
-            <div>
-                <a href="/todo">To do</a>
-                <a href="/counter">Add new user</a>
+            <div class="flex gap-x-4">
+                <a href="/todo" class="border-b-2 border-black">To do</a>
+                <a href="/counter" class="border-b-2 border-black">Add new user</a>
             </div>
         </div>
         <main class="flex justify-center">
