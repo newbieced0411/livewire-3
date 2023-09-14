@@ -1,7 +1,7 @@
 
 # Livewire 3
 
-This project is for my practing livewire 3.
+This project is for my practicing livewire 3.
 
 
 ## Tech Stack
@@ -13,5 +13,5 @@ This project is for my practing livewire 3.
 
 ## Features
 
-- Adding new user with count of users
+- Adding new users with count of users
 - To do App
