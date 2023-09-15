@@ -9,10 +9,10 @@
                     <div class="mb-6">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">*
                             Todo </label>
-                        <input wire:model.blur='name' type="text" id="name" placeholder="Todo.."
+                        <input wire:model.live.debounce.500ms='name' type="text" id="name" placeholder="Todo.."
                             class="bg-gray-100  text-gray-900 text-sm rounded block w-full p-2.5">
                         @error('name')
-                        <span class="text-red-500 text-xs mt-3 block ">{{ $message }}</span>
+                            <span class="text-red-500 text-xs mt-3 block ">{{ $message }}</span>
                         @enderror
                     </div>
                     <button type="submit"
@@ -20,7 +20,9 @@
                         +</button>
                     <button type="reset" wire:click.prevent='resetBtn'
                         class="px-4 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-600">Reset</button>
-                    <span class="text-green-500 text-xs">Saved.</span>
+                    @if (session('success'))
+                        <span class="text-green-500 text-xs">{{ session('success') }}.</span>
+                    @endif
                 </form>
             </div>
         </div>
