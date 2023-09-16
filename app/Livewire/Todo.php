@@ -33,6 +33,9 @@ class Todo extends Component
         $validated = $this->validateOnly('name');
         ModelsTodo::create($validated);
         session()->flash('success', 'Saved');
+
+        $this->dispatch('todo-created', message: 'Todo created successfully!');
+
         $this->reset(['name']);
         $this->resetPage();
         $this->resetBtn();
@@ -48,9 +51,11 @@ class Todo extends Component
             ModelsTodo::findOrFail($this->editToDoId)->update([
                 'name' => $this->editName
             ]);
-    
+            $this->dispatch('todo-updated', message: 'Todo updated successfully!');
+
             $this->cancelEdit();
         } catch (\Exception $e) {
+            $this->dispatch('error', message: 'Data has been deleted!');
             session()->flash('error', 'Data has been deleted.');
             return;
         }
@@ -61,6 +66,7 @@ class Todo extends Component
         try {
             ModelsTodo::findOrFail($id)->delete();
         } catch (\Exception $e) {
+            $this->dispatch('error', message: 'Data has been deleted!');
             session()->flash('error', 'Failed to delete');
             return;
         }
@@ -73,6 +79,7 @@ class Todo extends Component
             $this->editToDoId = $id;
             $this->editName = ModelsTodo::findOrFail($id)->name;
         } catch (\Exception $e) {
+            $this->dispatch('error', message: 'Data has been deleted!');
             session()->flash('error', 'Data has been deleted.');
             return;
         }
@@ -86,7 +93,7 @@ class Todo extends Component
     }
 
     public function cancelEdit()
-    {   
+    {
         $this->resetBtn();
         $this->reset('editToDoId', 'editName');
     }
