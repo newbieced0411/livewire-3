@@ -3,7 +3,9 @@
 use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home;
+use App\Livewire\Register;
 use App\Livewire\Todo;
+use App\Livewire\User\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ use App\Livewire\Todo;
 Route::get('/', Home::class);
 Route::get('/counter', Counter::class);
 Route::get('/todo', Todo::class);
+Route::get('/register', Register::class);
+Route::get('/user-list', View::class);

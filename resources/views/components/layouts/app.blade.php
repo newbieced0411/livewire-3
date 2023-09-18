@@ -7,7 +7,7 @@
 
     <title>Livewire 3 - @yield('page-title')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-    
+
     {{-- Scripts --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -24,11 +24,35 @@
         <div class="flex gap-x-4">
             <a href="/todo" class="border-b-2 border-black">To do</a>
             <a href="/counter" class="border-b-2 border-black">Add new user</a>
+            <a href="/user-list" class="border-b-2 border-black">User list</a>
+            <a href="/register" class="border-b-2 border-black">Register</a>
         </div>
     </div>
     <main class="flex justify-center">
         {{ $slot }}
     </main>
+
+    <script>
+        $(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        });
+    </script>
 
     @stack('scripts')
     @livewireScripts
